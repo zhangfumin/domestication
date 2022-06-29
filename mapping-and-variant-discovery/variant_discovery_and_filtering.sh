@@ -17,7 +17,7 @@ java -jar -Xmx100g -Xms100g -XX:+UseSerialGC GenomeAnalysisTK.jar  -R rgp5.fa -n
 java -jar -Xmx100g -Xms100g -XX:+UseSerialGC GenomeAnalysisTK.jar   -R rgp5.fa  -T VariantRecalibrator  -nt 8  -input  1578_samples_hp_SNP.vcf  -resource:snp,known=true,training=true,truth=true,prior=10.0 knowsites.vcf -an DP  -an QD -an MQ  -an FS -an BaseQRankSum -an MQRankSum  -an ReadPosRankSum -mode SNP -tranche 99.9 -tranche 99.0     -tranche 97.0 -tranche 95.0 -tranche 93.0 -tranche 90.0  -recalFile 1578_samples_hp_SNP_VQSR.recal  -tranchesFile 1578_samples_hp_SNP_VQSR.tranches  -rscriptFile 1578_samples_hp_SNP_VQSR.plot.R
 java -jar -Xmx100g -Xms100g -XX:+UseSerialGC GenomeAnalysisTK.jar   -R rgp5.fa  -T  ApplyRecalibration  -nt 8  -input  1578_samples_hp_SNP.vcf  -mode SNP  --ts_filter_level 90.0   -recalFile  1578_samples_hp_SNP_VQSR.recal  -tranchesFile 1578_samples_hp_SNP_VQSR.tranches  -o 1578_samples_hp_SNP_VQSR_90.vcf
 #Filtering the SNPs with AN < 1578 (i.e., with less than half of samples with genotypes) 
-java -jar  GenomeAnalysisTK.jar   -R rgp5.fa  -T VariantFiltration  -V  1578_samples_hp_SNP_VQSR_90.vcf  --filterExpression "AN < 1578" --filterName "filter" -o 1578_samples_SNP.vcf
+java -jar  GenomeAnalysisTK.jar   -R rgp5.fa  -T VariantFiltration  -V  1578_samples_hp_SNP_VQSR_90.vcf  --filterExpression "AN < 1578" --filterName "filter" -o 1578_samples_snp.vcf
 
 #Selecting INDEL and filtering INDEL
 java -jar -Xmx100g -Xms100g -XX:+UseSerialGC GenomeAnalysisTK.jar   -R rgp5.fa -nt 8  -T SelectVariants -V 1578_samples_hp.vcf -selectType INDEL -o 1578_samples_hp_INDEL.vcf

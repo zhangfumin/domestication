@@ -1,5 +1,12 @@
 #!/usr/bin/perl -w
+
+#instruction: Three parameters must be provided on the command line, sample, vcf, fr.
+#sample: a file contains the informaton of each individual sample and its population. Every line includes names of an individual sample and its population, whiche were seperated by a tab character. If samples are used in next analysis, the sign '+' were add in front of teir name. For example, +ind_CHN_MC18	cultivated 
+#vcf: an vcf file contains SNPs of all samples
+#fr: an Output fule including SNP allele frequency in ecah population
+
 use strict;
+
 my $sample = shift;
 my $vcf    = shift;   
 my $fr     = shift;

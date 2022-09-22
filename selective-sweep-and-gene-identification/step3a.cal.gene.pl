@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 
-my $gene_info=shift;  # a group of brief parameters about target genes separated by TAB, ie: xxx chr04 xxxx xxx   
+my $gene_info=shift;  # a group of brief parameters about target genes separated by TAB. 
+                      # For example:  Os01g0259900	chr01	8716853	8719898   
 my $snp_fre=shift; # allele frequency of SNPs
 my $snp_pos=shift; # Position index of SNPs 
 my $us=shift;  #upstream extention (bp)    
